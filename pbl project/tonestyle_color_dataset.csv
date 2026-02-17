@@ -1,0 +1,25 @@
+Skin_Tone,Undertone,L_star,a_star,b_star,Color_Name,Color_HEX,Suitability_Score,Source
+light,warm,65,10,18,Peach,#FFDAB9,0.92,Color theory literature
+light,warm,65,12,20,Soft Coral,#F88379,0.90,Color theory literature
+light,warm,66,8,15,Cream,#FFFDD0,0.88,Color theory literature
+light,cool,68,15,8,Lavender,#E6E6FA,0.93,Color theory literature
+light,cool,67,14,6,Soft Blue,#ADD8E6,0.90,Color theory literature
+light,neutral,64,10,10,Blush,#F4C2C2,0.89,Color theory literature
+light,neutral,63,9,9,Mint,#98FF98,0.87,Color theory literature
+
+medium,warm,55,14,20,Mustard,#FFDB58,0.94,Color theory literature
+medium,warm,54,13,18,Olive,#808000,0.92,Color theory literature
+medium,warm,53,15,22,Rust,#B7410E,0.90,Color theory literature
+medium,warm,52,12,17,Coral,#FF7F50,0.91,Color theory literature
+medium,cool,50,18,10,Emerald,#50C878,0.93,Color theory literature
+medium,cool,51,17,9,Teal,#008080,0.91,Color theory literature
+medium,neutral,52,13,13,Dusty Blue,#6E7F80,0.89,Color theory literature
+medium,neutral,53,12,12,Soft Red,#C94C4C,0.88,Color theory literature
+
+dark,warm,38,16,22,Gold,#FFD700,0.95,Color theory literature
+dark,warm,37,15,20,Maroon,#800000,0.93,Color theory literature
+dark,warm,36,14,21,Burnt Orange,#CC5500,0.91,Color theory literature
+dark,cool,40,19,12,Royal Blue,#4169E1,0.94,Color theory literature
+dark,cool,39,18,11,Plum,#8E4585,0.92,Color theory literature
+dark,neutral,41,15,15,Charcoal,#36454F,0.90,Color theory literature
+dark,neutral,42,14,14,Crimson,#DC143C,0.89,Color theory literature
