@@ -28,14 +28,14 @@ It combines **Computer Vision**, **Deep Learning (CNN)**, and **Machine Learning
 
 <div align="center">
 
-### 🌐 Web App
-<img src="demo/screenshot2.jpeg" alt="ToneStyle Web App" width="750"/>
+### 🌐ToneStyle Real-Time Webcam Detection
+<img src="demo/screenshot2.jpeg" alt="ToneStyle Real-Time Webcam Detection" width="750"/>
 <p><em>Live camera analysis showing skin tone (Medium), undertone (Warm) and recommended wardrobe palette</em></p>
 
 <br/>
 
-### 🎥 Real-Time Webcam Detection
-<img src="demo/screenshot1.jpeg" alt="Real-time Detection" width="750"/>
+### 🎥 Tonestyle Web App
+<img src="demo/screenshot1.jpeg" alt="Tonestyle Web App" width="750"/>
 <p><em>Multi-face detection with individual skin tone & undertone classification at real-time FPS</em></p>
 
 </div>
