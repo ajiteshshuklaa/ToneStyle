@@ -1,93 +1,150 @@
-ToneStyle  
-AI-Based Skin Tone & Color Recommendation System  
-ToneStyle is a real-time AI-powered computer vision application that detects a user’s skin tone and undertone using a webcam and provides personalized color recommendations based on color theory.
+<div align="center">
 
+# 🎨 ToneStyle 
+### Real-time Skin Tone Detection & Personalized Color Recommendation System
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat)
 
- Project Overview:
- Choosing the right colors based on skin tone is often challenging. ToneStyle solves this problem by combining Computer Vision, Deep Learning, and Machine Learning to automatically analyze facial skin and suggest suitable colors in real time.
+*Choosing the right colors for your skin tone — solved with AI.*
 
-The system captures live video, detects the face, analyzes skin characteristics, and recommends colors that best complement the user’s complexion.
+</div>
 
-Key Features
-- Real-time webcam-based skin tone detection
-- CNN-based classification using MobileNetV2
-- Accurate face detection using SSD (OpenCV DNN)
-- Undertone detection (Warm, Cool, Neutral) using LAB color space
-- Multi-frame averaging for stable predictions
-- Ensemble Voting Classifier for experimental ML-based classification
-- Personalized color recommendations based on tone + undertone
-- Optimized for real-time performance (low latency, smooth output)
-- The system analyzes facial skin region and suggests colors that best complement the detected skin tone.
+---
 
-  Technologies Used
-  Languages:Python
+## 🧠 About the Project
 
-Libraries & Frameworks:OpenCV, TensorFlow/Keras, NumPy, Pandas, Scikit-learn, Joblib
+ToneStyle is a real-time AI-powered application that uses your webcam to detect skin tone and undertone, then recommends personalized colors based on color theory — no manual input needed.
 
-Core Domains:Computer Vision, Deep Learning, Machine Learning
+It combines **Computer Vision**, **Deep Learning (CNN)**, and **Machine Learning (Ensemble)** to analyze facial skin live and suggest shades that genuinely complement your complexion.
 
-How It Works (Pipeline):
-1.Webcam Input → Captures real-time video using OpenCV
-2.Face Detection → Uses SSD model to detect face region
-3.Preprocessing → Resize, normalize, and prepare input image
-4.Skin Tone Prediction → CNN (MobileNetV2) predicts tone (Light/Medium/Dark)
-5.Color Analysis → Convert RGB → LAB color space
-6.Undertone Detection → Based on LAB values (a, b) and ITA calculation
-7.Multi-frame Smoothing → Averages predictions over frames for stability
-8.Color Recommendation → Suggests suitable colors based on tone + undertone
+---
 
+## 📸 Demo
 
-000Project Structure
-ToneStyle/
+<div align="center">
+
+### 🌐 Web App
+<img src="demo/screenshot2.jpeg" alt="ToneStyle Web App" width="750"/>
+<p><em>Live camera analysis showing skin tone (Medium), undertone (Warm) and recommended wardrobe palette</em></p>
+
+<br/>
+
+### 🎥 Real-Time Webcam Detection
+<img src="demo/screenshot1.jpeg" alt="Real-time Detection" width="750"/>
+<p><em>Multi-face detection with individual skin tone & undertone classification at real-time FPS</em></p>
+
+</div>
+
+---
+
+## ✨ Key Features
+
+- 🎥 Real-time webcam skin tone detection
+- 🤖 CNN (MobileNetV2) for tone classification — Light / Medium / Dark
+- 👤 Face detection via SSD (OpenCV DNN)
+- 🌡️ Undertone analysis (Warm / Cool / Neutral) using LAB color space + ITA
+- 📊 Multi-frame averaging for stable, smooth predictions
+- 🗳️ Ensemble Voting Classifier (Scikit-learn) for ML-based classification
+- 🎨 Personalized color recommendations based on tone + undertone
+- ⚡ Optimized for real-time performance (low latency)
+
+---
+
+## ⚙️ How It Works
+
+```
+Webcam Input → Face Detection (SSD) → Preprocessing → CNN Skin Tone Prediction
+      → RGB → LAB Conversion → Undertone Detection (a, b, ITA)
+          → Multi-frame Smoothing → Color Recommendation
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Tools |
+|---|---|
+| Language | Python |
+| Deep Learning | TensorFlow / Keras, MobileNetV2 |
+| Computer Vision | OpenCV (SSD DNN) |
+| Machine Learning | Scikit-learn, Joblib |
+| Data | NumPy, Pandas |
+
+---
+
+## 📁 Project Structure
+
+```
+TONE-STYLE/
 │
-├── webcam_skin_detect.py
-├── predict_skin.py
-├── skin_tone_model.keras
-├── tonestyle_color_dataset.csv
-├── test1.jpg
-└── README.md
-How to Run:
-1.Clone Repository:
-git clone https://github.com/yourusername/ToneStyle.git
-cd ToneStyle.
-2.Install Dependencies:
-pip install opencv-python tensorflow numpy pandas scikit-learn joblib
-3.Run the Application:
-python webcam_skin_detect.py
+├── src/              # Core ML logic
+├── models/           # Trained models
+├── data/             # Dataset
+├── web_app/          # UI / Web interface
+├── notebooks/        # Experiments
+├── demo/             # Sample outputs
+│
+├── main.py           # Entry point
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
 
-Dataset
-1.Custom experimental dataset (CSV) created for:
--Skin tone
--Undertone
--Color recommendation mapping
-2.Used for:
--Validation
--Feature-based classification
--Testing ML models
+---
 
- Models Used
-CNN (MobileNetV2) → Skin tone classification
-SSD (Deep Learning) → Face detection
-Voting Classifier (Scikit-learn) → Ensemble-based classification
+## 🚀 Quick Start
 
-Key Concepts Implemented
-Computer Vision
-Deep Learning (CNN)
-Machine Learning (Ensemble Learning)
-LAB Color Space
-Feature Engineering (L, a, b, ITA)
-Real-Time Processing
+```bash
+# 1. Clone the repo
+git clone https://github.com/ajiteshshuklaa/ToneStyle.git
+cd ToneStyle
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the app
+python main.py
+```
+
+> Press **Q** to exit the webcam window.
+
+---
+
+## 📊 Dataset
+
+Custom experimental dataset (CSV) covering:
+- Skin tone labels (Light / Medium / Dark)
+- Undertone labels (Warm / Cool / Neutral)
+- Color recommendation mappings
+
+Used for validation, feature-based ML classification, and model testing.
+
+---
+
+## 🤖 Models Used
+
+| Model | Purpose |
+|---|---|
+| MobileNetV2 (CNN) | Skin tone classification |
+| SSD (OpenCV DNN) | Real-time face detection |
+| Voting Classifier | Ensemble ML classification |
 
 
-Author
-Ajitesh Shukla
-AI & Computer Vision Enthusiast
+---
 
+## 👩‍💻 Author
 
+**Ajitesh Shukla** — AI & Computer Vision Enthusiast
 
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/ajiteshshuklaa)
 
+---
 
-👨‍💻 Author
-Ajitesh Shukla
-AI & Computer Vision Enthusiast
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
