@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+archive (4)/
+*.zip
+
+db.sqlite3
+
+venv/
+
+**/venv/

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg-color: #FAF6F3;
+    --text-main: #3E352F;
+    --text-muted: #7A6F68;
+    --accent: #D7A68D;
+    --accent-dark: #B88166;
+    --card-bg: rgba(255, 255, 255, 0.65);
+    --card-border: rgba(255, 255, 255, 0.5);
+    --shadow: 0 12px 40px rgba(184, 129, 102, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top left, #FFFFFF 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(215, 166, 141, 0.15) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.logo-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.logo-container img {
+    height: 120px;
+    filter: drop-shadow(0 4px 12px rgba(184, 129, 102, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.02);
+}
+
+.main-container {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Glassmorphism Cards */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 50px rgba(184, 129, 102, 0.18);
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* Buttons & Inputs */
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px dashed var(--accent);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: var(--accent-dark);
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--bg-color);
+    border: 1px solid var(--accent);
+    color: var(--accent-dark);
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-right: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--accent);
+    color: white;
+}
+
+button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(215, 166, 141, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(215, 166, 141, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Webcam specific styling */
+video_container {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--card-border);
+    background: #000;
+}
+
+video {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Results Full-Width Panel */
+.results-card {
+    grid-column: 1 / -1; /* Spans full width */
+    margin-top: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(184, 129, 102, 0.15);
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.result-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    text-transform: capitalize;
+}
+
+/* Color palettes */
+.color-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.color-tag {
+    background: var(--accent);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(215, 166, 141, 0.2);
+}
+
+/* Loader */
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--accent-dark);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+}

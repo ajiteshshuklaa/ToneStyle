@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToneStyle - AI Color Analysis</title>
+    <link rel="stylesheet" href="{% static 'detector/css/style.css' %}">
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="{% static 'detector/images/logo.png' %}" alt="ToneStyle Logo">
+    </div>
+
+    <div class="main-container">
+
+        <!-- Upload Card -->
+        <div class="card">
+            <h2>Upload Photo</h2>
+            <form method="POST" enctype="multipart/form-data" style="width: 100%;" onsubmit="showLoading('upload-loading')">
+                {% csrf_token %}
+                <input type="file" name="image" required accept="image/*">
+                <button type="submit">Analyze Skin Tone</button>
+                <div class="loading" id="upload-loading">Analyzing your tone...</div>
+            </form>
+        </div>
+
+        <!-- Webcam Card -->
+        <div class="card">
+            <h2>Live Camera</h2>
+            <div class="video_container" style="width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--card-border); background: #000;">
+                <video id="video" style="width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3;" autoplay playsinline></video>
+            </div>
+            <button onclick="capture()">Capture & Analyze</button>
+            <div class="loading" id="webcam-loading" style="margin-top: 15px;">Capturing frame...</div>
+            
+            <canvas id="canvas" style="display:none;"></canvas>
+            
+            <form method="POST" id="webcamForm" style="display:none;">
+                {% csrf_token %}
+                <input type="hidden" name="webcam_image" id="webcam_image">
+            </form>
+        </div>
+
+        <!-- Result Card -->
+        {% if result %}
+        <div class="card results-card" id="results-section">
+            <div class="result-row">
+                <span class="result-label">Skin Tone</span>
+                <span class="result-value">{{ result.tone }}</span>
+            </div>
+            
+            <div class="result-row" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                <span class="result-label" style="font-size: 0.95rem;">AI Tone Composition</span>
+                <div style="display: flex; gap: 15px; width: 100%; font-size: 0.85rem; color: var(--text-main);">
+                    <span><strong>Light:</strong> {{ result.scores.light }}%</span>
+                    <span><strong>Medium:</strong> {{ result.scores.medium }}%</span>
+                    <span><strong>Dark:</strong> {{ result.scores.dark }}%</span>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <span class="result-label">Undertone</span>
+                <span class="result-value">{{ result.undertone }}</span>
+            </div>
+            <div class="result-row" style="flex-direction: column; align-items: flex-start; gap: 15px;">
+                <span class="result-label">Recommended Wardrobe Palette</span>
+                <div class="color-tags" id="color-tags-container">
+                    <!-- Javascript will split the colors string right here -->
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            // Parse comma-separated colors and turn them into elegant pill chips
+            const rawColors = "{{ result.colors }}";
+            const tagsContainer = document.getElementById('color-tags-container');
+            const colorArray = rawColors.split(',').map(c => c.trim()).filter(c => c);
+            
+            colorArray.forEach(color => {
+                const span = document.createElement('span');
+                span.className = 'color-tag';
+                span.innerText = color;
+                tagsContainer.appendChild(span);
+            });
+
+            // Scroll down to results if they exist!
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        </script>
+        {% endif %}
+
+    </div>
+
+<script>
+// webcam start
+const video = document.getElementById('video');
+
+navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    .then(stream => {
+        video.srcObject = stream;
+    })
+    .catch(err => {
+        console.error("Camera access denied or unavailable", err);
+        document.querySelector('.video_container').innerHTML = '<p style="padding:40px;text-align:center;color:#fff;font-size:0.9rem;">Camera connection blocked. Please allow permissions in your browser or use the Image Upload.</p>';
+        document.querySelector('.video_container').style.background = 'var(--text-main)';
+    });
+
+// Loading UI
+function showLoading(id) {
+    document.getElementById(id).style.display = 'block';
+}
+
+// capture
+function capture() {
+    showLoading('webcam-loading');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // Make sure we have valid dimensions
+    if (video.videoWidth === 0) {
+        alert("Camera isn't fully loaded or allowed yet!");
+        document.getElementById('webcam-loading').style.display = 'none';
+        return;
+    }
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0);
+
+    let data = canvas.toDataURL('image/png');
+    document.getElementById('webcam_image').value = data;
+    document.getElementById('webcamForm').submit();
+}
+</script>
+
+</body>
+</html>
