@@ -26,7 +26,7 @@ It combines **Computer Vision**, **Deep Learning (CNN)**, and **Machine Learning
 
 ## 🚀 Live Demo
 [https://tone-style.onrender.com](https://tone-style.onrender.com)
-Experience real-time skin tone and undertone detection with personalized color recommendations.
+<p><em>Experience real-time skin tone and undertone detection with personalized color recommendations.</em></p>
 
 ### 🌐ToneStyle Real-Time Webcam Detection
 <img src="demo/screenshot2.jpeg" alt="ToneStyle Real-Time Webcam Detection" width="750"/>
