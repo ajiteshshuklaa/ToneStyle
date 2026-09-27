@@ -27,8 +27,6 @@ It combines **Computer Vision**, **Deep Learning (CNN)**, and **Machine Learning
 ## 📸 Demo
 [https://tone-style.onrender.com](https://tone-style.onrender.com)
 
-<div align="center">
-
 ### 🌐ToneStyle Real-Time Webcam Detection
 <img src="demo/screenshot2.jpeg" alt="ToneStyle Real-Time Webcam Detection" width="750"/>
 <p><em>Live camera analysis showing skin tone (Medium), undertone (Warm) and recommended wardrobe palette</em></p>
